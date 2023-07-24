@@ -1,0 +1,6 @@
+pytest
+scapy
+pytest-mock
+pandas
+pyarrow
+fastparquet

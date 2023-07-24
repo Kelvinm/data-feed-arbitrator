@@ -127,6 +127,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.feed_arb/
 
 # Spyder project settings
 .spyderproject
