@@ -1,4 +1,4 @@
-# Market Data Packet Processing 
+# Market Data Feed Packet Processing and Arbitration
 
 This project provides a Python-based solution for the processing and analysis of market data packets captured from market data recorders. The main goal is to perform feed arbitration on UDP channels and compute several statistics, such as:
 
@@ -43,14 +43,15 @@ These metrics are computed after the feed arbitration is performed on the exchan
 
 ## Considerations
 
-- **Concurrency**: In this solution, we process pcap files sequentially. If there are a large number of large files, it may be beneficial to process files in parallel to improve performance.
 
 - **Error Handling**: This solution does not include robust error handling. In a production environment, we should add error handling to account for issues like missing files, corrupted files, and invalid packet data.
 
-- **Unit Tests**: This solution does not currently include unit tests. Adding unit tests will ensure the correctness of the script as we modify it or add new features in the future.
+- **Unit Tests**: This solution includes some unit tests but should be fully fleshed out and further developed to cover edge cases as time goes on.
 
 - **Little Endian Byte Order**: The sequence numbers in the UDP payloads are in Little Endian byte order, which has been accounted for while extracting sequence numbers.
 
 - **Efficiency**: The efficiency of the solution can be further improved by using lower-level libraries (like dpkt instead of scapy) for packet processing. 
 
-- **Data Persistence**: Currently, the script saves processed data into parquet files with a daily timestamp. This data is then read back from the disk when calculating metrics. For better performance, consider using a database system or an in-memory data structure for storing packet data.
+- **Data Persistence**: Currently, the script saves processed data into parquet files with a daily timestamp. This data is then read back from the disk when calculating metrics. For better performance, we can consider using a database system or an in-memory data structure for storing packet data.
+
+- **Language Choice**: In a production environment, a project like this would be better served with a faster lower level language.  Rust, C, C++, Golang are some choices.  
